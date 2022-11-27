@@ -11,8 +11,13 @@ jobs:
         with:
           repository: home-assistant/docker
           path: ha
+      - name: Check out my other private repo
+        uses: actions/checkout@master
+        with:
+          repository: loeken/docker-home-assistant
+          path: docker-home-assistant
       - name: ls
-        run: cp Dockerfile ha/Dockerfile
+        run: cp docker-home-assistant/Dockerfile ha/Dockerfile
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
