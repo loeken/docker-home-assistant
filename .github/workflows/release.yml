@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: loeken/home-assistant:2022.11.4
+          tags: loeken/home-assistant:2022.11.4,loeken/home-assistant:latest
           context: ./ha
           no-cache: true
       - name: Run Snyk to check Docker image for vulnerabilities
