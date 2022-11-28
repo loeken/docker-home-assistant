@@ -1,7 +1,7 @@
 FROM alpine:3.17
 
 ARG WHEELS_LINKS=https://wheels.home-assistant.io/musllinux
-RUN apk add py3-pip
+RUN apk add py3-pip libpcap
 # Synchronize with homeassistant/core.py:async_stop
 ENV \
     S6_SERVICES_GRACETIME=220000
@@ -33,3 +33,4 @@ RUN \
 COPY rootfs /
 
 WORKDIR /config
+ENTRYPOINT ["hass"]
