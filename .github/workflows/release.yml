@@ -9,7 +9,8 @@ jobs:
       - name: Check out my other private repo
         uses: actions/checkout@master
         with:
-          repository: home-assistant/docker
+          repository: home-assistant/core
+          ref: 2022.11.4
           path: ha
       - name: Check out my other private repo
         uses: actions/checkout@master
