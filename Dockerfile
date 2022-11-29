@@ -33,4 +33,4 @@ RUN \
 COPY rootfs /
 
 WORKDIR /config
-ENTRYPOINT ["hass"]
+ENTRYPOINT ["hass", "-c", "/config"]
