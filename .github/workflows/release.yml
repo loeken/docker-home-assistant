@@ -2,7 +2,7 @@ name: release
 on:
   push:
     branches: [ main ]
-    path: Dockerfile
+#    path: Dockerfile
 jobs:
   release:
     runs-on: ubuntu-22.04
