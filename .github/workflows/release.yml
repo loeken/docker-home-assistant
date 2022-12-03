@@ -2,6 +2,7 @@ name: release
 on:
   push:
     branches: [ main ]
+    path: Dockerfile
 jobs:
   release:
     runs-on: ubuntu-22.04
@@ -36,7 +37,7 @@ jobs:
           push: true
           tags: loeken/home-assistant:2022.11.5,loeken/home-assistant:latest
           context: ./ha
-          no-cache: true
+          no-cache: false
           
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
