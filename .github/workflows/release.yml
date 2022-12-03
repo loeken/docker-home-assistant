@@ -2,8 +2,6 @@ name: release
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'Dockerfile'
 jobs:
   release:
     runs-on: ubuntu-22.04
@@ -13,7 +11,7 @@ jobs:
         with:
           repository: home-assistant/core
           path: ha
-          ref: refs/tags/2022.11.5
+          ref: refs/tags/2022.11.4
       - name: Check out my other private repo
         uses: actions/checkout@master
         with:
@@ -36,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: loeken/home-assistant:2022.11.5,loeken/home-assistant:latest
+          tags: loeken/home-assistant:2022.11.4
           context: ./ha
           no-cache: true
           
