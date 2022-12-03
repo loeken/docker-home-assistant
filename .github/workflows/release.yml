@@ -11,7 +11,7 @@ jobs:
         with:
           repository: home-assistant/core
           path: ha
-          ref: refs/tags/2022.11.4
+          ref: refs/tags/2022.11.5
       - name: Check out my other private repo
         uses: actions/checkout@master
         with:
@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: loeken/home-assistant:2022.11.4
+          tags: loeken/home-assistant:2022.11.5,loeken/home-assistant:latest
           context: ./ha
           no-cache: true
           
@@ -43,11 +43,11 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: loeken/home-assistant:2022.11.4
+          image: loeken/home-assistant:2022.11.5
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: loeken/home-assistant:2022.11.4
+          image-ref: loeken/home-assistant:2022.11.5
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
