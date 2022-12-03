@@ -13,6 +13,7 @@ jobs:
         with:
           repository: home-assistant/core
           path: ha
+          ref: refs/tags/2022.11.5
       - name: Check out my other private repo
         uses: actions/checkout@master
         with:
@@ -35,9 +36,10 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: loeken/home-assistant:2022.11.4,loeken/home-assistant:latest
+          tags: loeken/home-assistant:2022.11.5,loeken/home-assistant:latest
           context: ./ha
           no-cache: true
+          
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         env:
