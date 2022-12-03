@@ -20,9 +20,10 @@ jobs:
           path: docker-home-assistant
       - name: ls
         run: cp docker-home-assistant/Dockerfile ha/Dockerfile
-
-      - name: patch requirements
+      - name: patch requirements 1/2
         run: sed -i 's/pillow==9.2.0/pillow==9.3.0/g' ha/requirements_all.txt
+      - name: patch requirements 2/2
+        run: sed -i 's/pillow==9.2.0/pillow==9.3.0/g' ha/homeassistant/package_constraints.txt
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
