@@ -12,7 +12,7 @@ jobs:
         with:
           repository: home-assistant/core
           path: ha
-          ref: refs/tags/2022.11.5
+          ref: refs/tags/2022.12.0
       - name: Check out my other private repo
         uses: actions/checkout@master
         with:
@@ -20,10 +20,6 @@ jobs:
           path: docker-home-assistant
       - name: ls
         run: cp docker-home-assistant/Dockerfile ha/Dockerfile
-      - name: patch requirements 1/2
-        run: sed -i 's/pillow==9.2.0/pillow==9.3.0/g' ha/requirements_all.txt
-      - name: patch requirements 2/2
-        run: sed -i 's/pillow==9.2.0/pillow==9.3.0/g' ha/homeassistant/package_constraints.txt
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -38,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: loeken/home-assistant:2022.11.5,loeken/home-assistant:latest
+          tags: loeken/home-assistant:2022.12.0,loeken/home-assistant:latest
           context: ./ha
           no-cache: false
           
@@ -47,11 +43,11 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: loeken/home-assistant:2022.11.5
+          image: loeken/home-assistant:2022.12.0
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: loeken/home-assistant:2022.11.5
+          image-ref: loeken/home-assistant:2022.12.0
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
