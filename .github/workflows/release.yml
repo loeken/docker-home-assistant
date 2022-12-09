@@ -12,7 +12,7 @@ jobs:
         with:
           repository: home-assistant/core
           path: ha
-          ref: refs/tags/2022.12.0
+          ref: refs/tags/2022.12.1
       - name: Check out my other private repo
         uses: actions/checkout@master
         with:
