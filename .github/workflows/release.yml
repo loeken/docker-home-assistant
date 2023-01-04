@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
 env: 
-  version: 2022.12.8
+  version: 2022.12.9
 jobs:
   release:
     runs-on: ubuntu-22.04
